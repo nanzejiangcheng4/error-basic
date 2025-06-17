@@ -1,19 +1,20 @@
 <script setup lang="ts">
-const onResetButtonClick = (error: Ref) => {
-  console.log(error);
-  error.value = null;
+import { ref } from "vue";
+
+const boundaryKey = ref(0);
+
+const onResetButtonClick = () => {
+  boundaryKey.value++;
 };
 </script>
 
 <template>
-  <NuxtErrorBoundary>
+  <NuxtErrorBoundary :key="boundaryKey">
     <ErrorGeneratorBasic />
     <template v-slot:error="errorProps">
       <p>エラーが発生しました!</p>
       <p>{{ errorProps.error }}</p>
-      <button v-on:click="onResetButtonClick(errorProps.error)">
-        エラーを解消
-      </button>
+      <button v-on:click="onResetButtonClick">エラーを解消</button>
     </template>
   </NuxtErrorBoundary>
   <p>
