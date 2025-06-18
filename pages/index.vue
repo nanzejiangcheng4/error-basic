@@ -5,5 +5,10 @@
         エラー表示実験
       </NuxtLink>
     </li>
+    <li>
+      <NuxtLink v-bind:to="{ name: 'errorHanlerNavigate' }">
+        画面表示のエラー実験
+      </NuxtLink>
+    </li>
   </ul>
 </template>
